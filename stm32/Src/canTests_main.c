@@ -21,21 +21,13 @@ uint8_t u8_New_Message_Received = FALSE;
 
 void sending_loop(void)
 {
-	u8_FDCAN_Tx_Payload[0] = 0x3A;
-	u8_FDCAN_Tx_Payload[1] = 0x12;
-	u8_FDCAN_Tx_Payload[2] = 0x00;
-	u8_FDCAN_Tx_Payload[3] = 0x00;
-	u8_FDCAN_Tx_Payload[4] = 0x00;
-	u8_FDCAN_Tx_Payload[5] = 0x00;
-	u8_FDCAN_Tx_Payload[6] = 0x00;
-	u8_FDCAN_Tx_Payload[7] = 0x00;
-
-	u8_FDCAN_Tx_Payload[8] = 0x00;
+	u8_FDCAN_Tx_Payload[0] = 0x05;
+	u8_FDCAN_Tx_Payload[1] = 0x00;
 
 	TxHeader.Identifier = 1;
 	TxHeader.IdType = FDCAN_STANDARD_ID;
 	TxHeader.TxFrameType = FDCAN_DATA_FRAME;
-	TxHeader.DataLength = FDCAN_DLC_BYTES_8;
+	TxHeader.DataLength = FDCAN_DLC_BYTES_2;
 	TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
 	TxHeader.BitRateSwitch = FDCAN_BRS_OFF;
 	TxHeader.FDFormat = FDCAN_FD_CAN;
