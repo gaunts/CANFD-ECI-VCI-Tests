@@ -44,7 +44,7 @@ ECI_CTRL_MESSAGE getStartMsg()
     stcCtrlMsg.u.sCanMessage.u.V1.uMsgInfo.Bits.srr  = 0;
     stcCtrlMsg.u.sCanMessage.u.V1.uMsgInfo.Bits.ext  = 0;
 
-    stcCtrlMsg.u.sCanMessage.u.V1.abData[0] = 0x02;
+    stcCtrlMsg.u.sCanMessage.u.V1.abData[0] = 0x00;
     stcCtrlMsg.u.sCanMessage.u.V1.abData[1] = 0x00;
 
     return stcCtrlMsg;
@@ -77,16 +77,16 @@ int main()
             continue;
         }
 
-        if (rec.u.sCanMessage.u.V1.abData[0] == 0x01)
+        if (rec.u.sCanMessage.u.V1.abData[0] == 0x01) // Windows ping
         {
-            stcCtrlMsg.u.sCanMessage.u.V1.abData[0] = 0x02;
+            stcCtrlMsg.u.sCanMessage.u.V1.abData[0] = 0x02; // Pong
             ECI116_CtrlSend(dwCtrlHandle, &stcCtrlMsg, 500);
-            stcCtrlMsg.u.sCanMessage.u.V1.abData[0] = 0x04;
+            stcCtrlMsg.u.sCanMessage.u.V1.abData[0] = 0x04; // Missed message
             pinged = 1;
             recCount = 0;
             expected = 0;
         }
-        else if (pinged == 1 && rec.u.sCanMessage.u.V1.abData[0] == 0x03)
+        else if (pinged == 1 && rec.u.sCanMessage.u.V1.abData[0] == 0x03) // Windows test message
         {
             int recv = rec.u.sCanMessage.u.V1.abData[1];
             if (expected != recv)
@@ -101,6 +101,11 @@ int main()
             
             recCount++;
             expected = (recv + 1) % 0xFF;
+        }
+        else if (rec.u.sCanMessage.u.V1.abData[0] == 0x05) // stm32 message
+        {
+            printf("Received %d\n", recCount);
+            recCount++;
         }
     }
 }
