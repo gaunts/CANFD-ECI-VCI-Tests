@@ -26,6 +26,19 @@ Here is my testing setup:
 
 Here is the message sending loop, found in stm32/Src/canTests_main.c:
 ````c
+u8_FDCAN_Tx_Payload[0] = 0x05;
+u8_FDCAN_Tx_Payload[1] = 0x00;
+
+TxHeader.Identifier = 1;
+TxHeader.IdType = FDCAN_STANDARD_ID;
+TxHeader.TxFrameType = FDCAN_DATA_FRAME;
+TxHeader.DataLength = FDCAN_DLC_BYTES_2;
+TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
+TxHeader.BitRateSwitch = FDCAN_BRS_OFF;
+TxHeader.FDFormat = FDCAN_FD_CAN;
+TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+TxHeader.MessageMarker = 0;
+
 int i = 0;
 while (i < 100)
 {
