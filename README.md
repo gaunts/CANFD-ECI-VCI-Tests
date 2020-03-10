@@ -67,6 +67,13 @@ Both drivers are setup in a similar way, according the the STM32 CAN pins setup:
 
 Linux (ECI):
 ````c
+ECI_HW_PARA astcHwPara = {0};
+ECI_CTRL_CONFIG stcCtrlConfig = {0};
+astcHwPara.wHardwareClass = ECI_HW_USB;
+
+if (ECI116_Initialize(1, &astcHwPara) != ECI_OK)
+    return false;
+
 ECI_CANBTP stcBtpSdr     = {ECI_CAN_BTMODE_NATIVE, 2, 63, 16, 16, 0};
 ECI_CANBTP stcBtpFdr     = {ECI_CAN_BTMODE_NATIVE, 2, 7, 2, 2, 0};
 
@@ -76,6 +83,9 @@ stcCtrlConfig.u.sCanConfig.u.V1.bOpMode = ECI_CAN_OPMODE_STANDARD |  ECI_CAN_OPM
 stcCtrlConfig.u.sCanConfig.u.V1.bExMode = ECI_CAN_EXMODE_EXTDATA | ECI_CAN_EXMODE_FASTDATA | ECI_CAN_EXMODE_ISOFD;
 stcCtrlConfig.u.sCanConfig.u.V1.sBtpSdr = stcBtpSdr;
 stcCtrlConfig.u.sCanConfig.u.V1.sBtpFdr = stcBtpFdr;
+
+if (ECI116_CtrlOpen(&dwCtrlHandle, 0, 0, &stcCtrlConfig) == ECI_OK)
+    return (ECI116_CtrlStart(dwCtrlHandle) == ECI_OK);
 ````
 
 Windows (VCI):
