@@ -24,7 +24,7 @@ Here is my testing setup:
 ![Test-setup-image](/Images/Ixxat-support-STM32-Windows-Linux-tests.png)
 
 
-Here is the message sending loop:
+Here is the message sending loop, found in stm32/Src/canTests_main.c:
 ````c
 int i = 0;
 while (i < 100)
@@ -35,7 +35,7 @@ while (i < 100)
 }
 ````
 
-And the receiving loop:
+And the receiving loop on the linux side:
 ````c
 int recCount = 0;
 while (true)
