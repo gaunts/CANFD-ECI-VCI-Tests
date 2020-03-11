@@ -1,6 +1,6 @@
 ## CANFD-ECI-VCI
 
-This repository illustrates a problem I am having the the Linux version of the Ixxat USB-To-CAN FD driver (ECI).
+This repository illustrates a problem I am having with the Linux version of the Ixxat USB-To-CAN FD driver (ECI).
 It contains sources to reproduce the issue as well as some images representing my setup.
 
 ### History
