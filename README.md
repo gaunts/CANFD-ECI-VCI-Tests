@@ -7,7 +7,7 @@ It contains sources to reproduce the issue as well as some images representing m
 I am working on a machine composed of several STM32 processors communicating using CAN.
 
 During development, we used windows software with the last version of the VCI Driver (v4.0.436) without any issue.
-For production, we are using a Linux machine under Debian with the ECI Driver (v1.11.3162.0) to receive data and send commands to this machine, using an Ixxat USB-To-CAN FD adapter.
+For production, we are using a Linux machine under Debian with the ECI Driver (v1.11.3162.0) to receive data and send commands to this machine, using an Ixxat USB-To-CAN FD compact adapter.
 The setup looks as follows:
 
 ![Production-setup-image](/Images/Ixxat-support-Production-setup.png)
