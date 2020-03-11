@@ -1,13 +1,13 @@
 ## CANFD-ECI-VCI
 
-This repository illustrates a problem I am having the the Linux version of the Ixxat USB-To-CAN FD driver (ECI).
+This repository illustrates a problem I am having with the Linux version of the Ixxat USB-To-CAN FD driver (ECI).
 It contains sources to reproduce the issue as well as some images representing my setup.
 
 ### History
 I am working on a machine composed of several STM32 processors communicating using CAN.
 
 During development, we used windows software with the last version of the VCI Driver (v4.0.436) without any issue.
-For production, we are using a Linux machine under Debian with the ECI Driver (v1.11.3162.0) to receive data and send commands to this machine, using an Ixxat USB-To-CAN FD adapter.
+For production, we are using a Linux machine under Debian with the ECI Driver (v1.11.3162.0) to receive data and send commands to this machine, using an Ixxat USB-To-CAN FD compact adapter.
 The setup looks as follows:
 
 ![Production-setup-image](/Images/Ixxat-support-Production-setup.png)
@@ -53,6 +53,7 @@ And the receiving loop on the linux side:
 int recCount = 0;
 while (true)
 {
+    dwCount = 1;
     hresult = ECI116_CtrlReceive(dwCtrlHandle, &dwCount, &rec, 1);
 
     if (hresult != ECI_OK)
