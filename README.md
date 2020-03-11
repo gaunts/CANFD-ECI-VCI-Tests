@@ -53,6 +53,7 @@ And the receiving loop on the linux side:
 int recCount = 0;
 while (true)
 {
+    dwCount = 1;
     hresult = ECI116_CtrlReceive(dwCtrlHandle, &dwCount, &rec, 1);
 
     if (hresult != ECI_OK)
