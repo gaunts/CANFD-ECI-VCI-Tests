@@ -74,6 +74,8 @@ It seems like a delay of around 100 ms causes problems, which is aproximately th
 
 __A delay of 10 ms causes no loss, as well as a delay of 150ms.__
 
+It has been tested on 3 different linux computers, and can be reproduced with the demo software.
+
 ### Configuration
 Both drivers are setup in a similar way, according the the STM32 CAN pins setup:
 
