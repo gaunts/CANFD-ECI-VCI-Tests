@@ -4,10 +4,10 @@ This repository illustrates a problem I am having with the Linux version of the 
 It contains sources to reproduce the issue as well as some images representing my setup.
 
 ### History
-I am working on a machine composed of several STM32 processors communicating using CAN.
+I am working on a machine composed of several STM32 microcontrollers (STM32G474-VET6) communicating using CAN.
 
 During development, we used windows software with the last version of the VCI Driver (v4.0.436) without any issue.
-For production, we are using a Linux machine under Debian with the ECI Driver (v1.11.3162.0) to receive data and send commands to this machine, using an Ixxat USB-To-CAN FD compact adapter.
+For production, we are using a Linux machine under Debian 10.3 with the ECI Driver (v1.11.3162.0) to receive data and send commands to this machine, using an Ixxat USB-To-CAN FD compact adapter.
 The setup looks as follows:
 
 ![Production-setup-image](/Images/Ixxat-support-Production-setup.png)
@@ -116,7 +116,7 @@ _control.StartLine();
 ### How you can reproduce yourself
 
 The source code for each module is present in the corresponding directory. Simply build and launch the executables.
-If you do not have an STM32 processor, I made a windows executable that demonstrates the problem, although it is not as reliable as testing with an STM32.  
+If you do not have an STM32 microcontroller, I made a windows executable that demonstrates the problem, although it is not as reliable as testing with an STM32.  
 The Windows-Linux setup is as follows:
 
 ![Windows-Linux-image](/Images/Ixxat-support-Windows-Linux-Test.png)
